@@ -540,7 +540,6 @@ class Hamilton:
     plt.ylabel('Wahrscheinlichkeit')
     plt.legend(loc='upper right', fontsize=23)
     plt.tight_layout()
-    plt.grid()
     if save_fig:
       if self.is_periodisch:
         plt.savefig(f'plots/{self.n_topf}_time_evolution_p.pdf', dpi = 300)
@@ -570,6 +569,8 @@ class Hamilton:
     if psi_t != []:
       ez = [psi_t]  # Das als ez zu bezeichnen ist falsch, ist aber einfacher
       
+     
+      
     if num >= len(ez):
       print(f'num have to be smaller then {len(ez)}')
       return -1
@@ -597,6 +598,14 @@ class Hamilton:
     else:
       y = [self.__wkeit(self.basis[i], ez[num]) \
             for i in range(2 * self.n_topf)]
+      
+      # wenn entartung vorliegt:
+      # y1 = [self.__wkeit(self.basis[i], ez[0]) \
+      #       for i in range(2 * self.n_topf)]
+      # y2 = [self.__wkeit(self.basis[i], ez[1]) \
+      #       for i in range(2 * self.n_topf)]
+      # y = [1/m.sqrt(2) * (y1[i] + y2[i]) for i in range(len(y1))]
+      
       if psi_t == []:
         print(f'Mit {num + 1}. Eigenzustand \n')
       plt.bar(x,y)
