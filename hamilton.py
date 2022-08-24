@@ -615,23 +615,6 @@ class Hamilton:
         plt.show()
       plt.clf()
     plt.style.use('default')
- 
-  def print_matrix(self):
-    for i in range(len(self.H)):
-      for j in range(len(self.H[0])):
-        if type(self.H[i][j]) == type(1) or type(self.H[i][j]) == type(1.0):
-          print(f'{self.H[i][j]:<4}', end=' ')
-        else:
-          print(f'{self.H[i][j].get_value():<4}',end=" ") 
-      print('')
-    print('\n')
-
-  def print_ez(self):
-    print(self.calculate_ew_and_ez()[1])
-     
-  def print_ew(self):
-    for i in self.calculate_ew_and_ez()[0]:
-      print(f'{i:.2f}')
     
   def __print_informations(self):
     tunnelwk = self.get_tunnelwk()
@@ -704,6 +687,23 @@ class Hamilton:
     assert(len(psi) == len(chi))
     ska = np.vdot(psi,chi) 
     return  np.real(np.vdot(ska,ska))
+
+  def print_matrix(self):
+    for i in range(len(self.H)):
+      for j in range(len(self.H[0])):
+        if type(self.H[i][j]) == type(1) or type(self.H[i][j]) == type(1.0):
+          print(f'{self.H[i][j]:<4}', end=' ')
+        else:
+          print(f'{self.H[i][j].get_value():<4}',end=" ") 
+      print('')
+    print('\n')
+
+  def print_ez(self):
+    print(self.calculate_ew_and_ez()[1])
+     
+  def print_ew(self):
+    for i in self.calculate_ew_and_ez()[0]:
+      print(f'{i:.2f}')
 
   def get_matrix_with_values(self):
     self.__fix_values()
