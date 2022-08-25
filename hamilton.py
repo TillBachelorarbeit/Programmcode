@@ -549,6 +549,7 @@ class Hamilton:
       plt.show()
     plt.clf()
 
+  # bar plot zum Zeitpunkt t
   def bar_plot_wkeit_time(self, t, psi_start = 0):
     assert(psi_start < 2* self.n_topf)
     self.calculate_basis()
@@ -634,7 +635,10 @@ class Hamilton:
           (nur fuer unterschiedliche Toepfe)')
     print(f'Tunnelwkeit von angeregten in angeregten Zustand = {tunnelwk[2]}')  
     print('\n')
-    
+  
+  # Fixiert die Werte von den Hamilton (davor waren die Werte des Hamiltons
+  # vom Typ Var. Allerdings werden zur weiteren Berechnung integer oder float
+  # Zahlen bentötigt)  
   def __fix_values(self):
     H_temp = [ [] for i in range(len(self.H))]
                                       
@@ -732,3 +736,4 @@ class Hamilton:
      
   def get_ew(self):
     return self.calculate_ew_and_ez()[0]
+  
