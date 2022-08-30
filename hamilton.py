@@ -142,7 +142,8 @@ class Hamilton:
     fig, ax = plt.subplots()
     
     if highes_prob != 0:
-      heat_map = sns.heatmap(data_heatmap, vmin=0 , vmax=highes_prob, cbar=False)
+      heat_map = sns.heatmap(data_heatmap, vmin=0 , vmax=highes_prob,\
+                              cbar=False)
     else:
       heat_map = sns.heatmap(data_heatmap, vmin=0, cbar=False)
     
@@ -508,36 +509,49 @@ class Hamilton:
     if info:
       print(f'gestartet im Zustand {label_name[psi_start]}')
       self.__print_informations()
-    
+  
+  # mean: Zeitlich gemittelte W'keit  
   def time_evolution(self, psi_start = 0, t_start = 0, t_end = 15, \
-                      grundzustand = False, save_fig=False, info=False):
+                      grundzustand = False, save_fig=False, info=False,\
+                      mean=False):
     t_list = np.linspace(t_start, t_end, t_end * 5)
     self.calculate_basis()
+    if grundzustand:
+      psi_start = 2*psi_start
     psi_0 = self.basis[psi_start]
     self.calculate_ew_and_ez()
     
     label_name = []
     for i in range(1,self.n_topf+1):
-      label_name.append(f'T{i}, g')
+      label_name.append(f'T{i}, g') 
       label_name.append(f'T{i}, e')
-    
+
+    if mean:
+      print('Aufenthaltswahrscheinlichkeit gemittelt:')  
+      
     if grundzustand:
       for i in range(0,self.n_topf * 2, 2):
         y = [self.__wkeit(self.basis[i], self.__calculate_psi_t(psi_0,t)) \
               for t in t_list]
+        if mean:
+          print(f'{label_name[i]}: {sum(y)/len(t_list):.4f}')
         plt.plot(t_list, y, label=label_name[i])
     else:
       for i in range(self.n_topf * 2):
         y = [self.__wkeit(self.basis[i], self.__calculate_psi_t(psi_0,t)) \
               for t in t_list]
+        if mean:
+          print(f'{label_name[i]}: {sum(y)/len(t_list):.4f}')
         plt.plot(t_list, y, label=label_name[i])
      
     if info:
       print(f'gestartet im Zustand {label_name[psi_start]}') 
       self.__print_informations()
      
-    plt.xlabel('t')
-    plt.ylabel('Wahrscheinlichkeit')
+    plt.xlabel('t',fontsize=16)
+    plt.ylabel('Wahrscheinlichkeit',fontsize=16)
+    plt.tick_params(axis='x', labelsize=16)
+    plt.tick_params(axis='y', labelsize=16)
     plt.legend(loc='upper right', fontsize=23)
     plt.tight_layout()
     if save_fig:
@@ -549,6 +563,7 @@ class Hamilton:
       plt.show()
     plt.clf()
 
+  
   # bar plot zum Zeitpunkt t
   def bar_plot_wkeit_time(self, t, psi_start = 0):
     assert(psi_start < 2* self.n_topf)
@@ -712,7 +727,8 @@ class Hamilton:
     print('\n')
 
   def print_ez(self):
-    print(self.calculate_ew_and_ez()[1])
+    for i in self.calculate_ew_and_ez()[1]:
+      print(i)
      
   def print_ew(self):
     for i in self.calculate_ew_and_ez()[0]:
