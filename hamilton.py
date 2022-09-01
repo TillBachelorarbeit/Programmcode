@@ -752,4 +752,3 @@ class Hamilton:
      
   def get_ew(self):
     return self.calculate_ew_and_ez()[0]
-  
