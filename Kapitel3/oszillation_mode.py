@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-import import_hamilton
-import hamilton
+import import_hamiltonian
+import hamiltonian
 import math as m
 import help_functions as pf  # importiere benoetigte Funktionen
 import numpy as np
@@ -35,7 +35,7 @@ if __name__ == '__main__':
     gamma = Delta / (2*d*F)
 
 
-    # Berechne Energien vom Hamiltion
+    # Berechne Energien vom Hamiltonian
     n_range = [i for i in range(20, -(60+ 1),-1)]
 
     psi_0_g = [2 * pf.gaus(i, beta=0.01, kappa=kappa, d=d) for i in n_range]
@@ -48,8 +48,8 @@ if __name__ == '__main__':
     energie = pf.zipping(energie_g,energie_e)
 
 
-    # Erstellt Hamiltion
-    h = hamilton.Hamilton(n, energie, [-Delta/4 ,0 ,0])
+    # Erstellt Hamiltonian
+    h = hamiltonian.Hamiltonian(n, energie, [-Delta/4 ,0 ,0])
     h.periodisch()
     
     # Heatmap   
@@ -80,7 +80,7 @@ if __name__ == '__main__':
     gamma = Delta / (2*d*F)
 
 
-    # Berechne Energien vom Hamiltion
+    # Berechne Energien vom Hamiltonian
     n_range = [i for i in range(20, -(40+ 1),-1)]
 
     psi_0_g = [2 * pf.gaus(i, beta=0.3, kappa=kappa, d=d) for i in n_range]
@@ -93,8 +93,8 @@ if __name__ == '__main__':
     energie = pf.zipping(energie_g,energie_e)
 
 
-    # Erstellt Hamiltion
-    h = hamilton.Hamilton(n, energie, [-Delta/4 ,0 ,0])
+    # Erstellt Hamiltonian
+    h = hamiltonian.Hamiltonian(n, energie, [-Delta/4 ,0 ,0])
     h.periodisch()
     
     # Heatmap   
