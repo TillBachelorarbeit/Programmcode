@@ -22,7 +22,7 @@ class Var:
   
 
 
-class Hamilton:
+class Hamiltonian:
   # t= Tunnelwahrscheinlichkeiten in t = [t_0, t_eg, t_ee] Reihenfolge,t
   # mit
   # t_0 = g1 in g2, also g in g
