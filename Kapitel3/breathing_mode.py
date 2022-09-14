@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-import import_hamilton
-import hamilton
+import import_hamiltonian
+import hamiltonian
 import math as m
 import help_functions as pf  # importiere benoetigte Funktionen
 
@@ -28,7 +28,7 @@ l_e = [0 for _ in n_range]
 l = pf.zipping(l_g,l_e)
 
 # Erstellt Hamiltion
-h = hamilton.Hamilton(n, l, [-Delta/4 ,0 ,0])
+h = hamiltonian.Hamiltonian(n, l, [-Delta/4 ,0 ,0])
 h.periodisch()
   
 # Heatmap   
