@@ -17,7 +17,7 @@ t_end = int(2  * ( 2 * m.pi / (d * F)) + 1)  # t fuer 2 Perioden
 # Interessante Werte
 T =  2 * m.pi / (d * F)   # Bloch Periode
 omega = 2 * m.pi / T      # Bloch Frequenz
-gamma = Tw / (d*F)
+gamma = 2*Tw / (d*F)
 
 ############################
 
