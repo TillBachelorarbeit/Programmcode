@@ -25,14 +25,14 @@ if __name__ == '__main__':
     
     F = 0.005        # Kraft
     d = 2*m.pi       # Peridoizitaet vom Potential
-    Delta = 0.994    # Bandbreite
+    Tw = 0.2485      # Tunnelwahrscheinlichkeitsamplitude
     t_end = int(2  * ( 2 * m.pi / (d * F)) + 1)  # t fuer 2 Perioden
     kappa = 0       # Kappa_0, anfangs Impuls
     
     # Interessante Werte
     T =  2 * m.pi / (d * F)   # Bloch Periode
     omega = 2 * m.pi / T      # Bloch Frequenz
-    gamma = Delta / (2*d*F)
+    gamma = 2*Tw / (d*F)
 
 
     # Berechne Energien vom Hamiltonian
@@ -49,7 +49,7 @@ if __name__ == '__main__':
 
 
     # Erstellt Hamiltonian
-    h = hamiltonian.Hamiltonian(n, energie, [-Delta/4 ,0 ,0])
+    h = hamiltonian.Hamiltonian(n, energie, [-Tw ,0 ,0])
     h.periodisch()
     
     # Heatmap   
@@ -70,14 +70,14 @@ if __name__ == '__main__':
     
     F = 0.005        # Kraft
     d = 2*m.pi       # Peridoizitaet vom Potential
-    Delta = 0.994    # Bandbreite
+    Tw = 0.2485      # Tunnelwahrscheinlichkeitsamplitude
     t_end = int(2  * ( 2 * m.pi / (d * F)) + 1)  # t fuer 2 Perioden
     kappa = 0       # Kappa_0, anfangs Impuls
     
     # Interessante Werte
     T =  2 * m.pi / (d * F)   # Bloch Periode
     omega = 2 * m.pi / T      # Bloch Frequenz
-    gamma = Delta / (2*d*F)
+    gamma = 2*Tw / (d*F)
 
 
     # Berechne Energien vom Hamiltonian
@@ -94,7 +94,7 @@ if __name__ == '__main__':
 
 
     # Erstellt Hamiltonian
-    h = hamiltonian.Hamiltonian(n, energie, [-Delta/4 ,0 ,0])
+    h = hamiltonian.Hamiltonian(n, energie, [-T ,0 ,0])
     h.periodisch()
     
     # Heatmap   
