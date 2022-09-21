@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
-import import_hamilton
-import hamilton
+import import_hamiltonian
+import hamiltonian
 
-H3 = hamilton.Hamilton(3, [5,10,5,10,5,10], [1, 1, 1])
+H3 = hamiltonian.Hamiltonian(3, [5,10,5,10,5,10], [1, 1, 1])
 H3.bar_plot_wkeit(save_fig=False)
 
 H3.periodisch()
