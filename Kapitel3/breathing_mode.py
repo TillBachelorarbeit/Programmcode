@@ -11,13 +11,13 @@ psi_start = n-2+1  # +1 , da n ungerade
 
 F = 0.005        # Kraft
 d = 2*m.pi       # Peridoizitaet vom Potential
-Delta = 0.994    # Bandbreite
+Tw = 0.2485      # Tunnelwahrscheinlichkeitsamplitude
 t_end = int(2  * ( 2 * m.pi / (d * F)) + 1)  # t fuer 2 Perioden
 
 # Interessante Werte
 T =  2 * m.pi / (d * F)   # Bloch Periode
 omega = 2 * m.pi / T      # Bloch Frequenz
-gamma = Delta / (2*d*F)
+gamma = Tw / (d*F)
 
 ############################
 
@@ -28,7 +28,7 @@ l_e = [0 for _ in n_range]
 l = pf.zipping(l_g,l_e)
 
 # Erstellt Hamiltion
-h = hamiltonian.Hamiltonian(n, l, [-Delta/4 ,0 ,0])
+h = hamiltonian.Hamiltonian(n, l, [-Tw ,0 ,0])
 h.periodisch()
   
 # Heatmap   
